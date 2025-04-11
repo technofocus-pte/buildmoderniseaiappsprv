@@ -106,9 +106,9 @@ Database for PostgreSQL.
     |:-------|:-------|
     |  Subscription  |  Select your **assigned subscription**  |
     | Resource group   |  Select your **assigned Resource group**  |
-    |  Region  |  Select @lab.CloudResourceGroup(ResourceGroup1).Location  |
+    |  Region  |  Select nearest Location  |
     | **Web App Details**   |    |
-    | Name   |  Enter !!quarkuwebapp@lab.LabInstance.Id!!  |
+    | Name   |  Enter !!quarkuwebappXXXX!!  |
     | Runtime stack   |  **Java 17**  |
     |  **Database**  |    |
     |  Engine  |  Select **PostgreSQL – Flexible Server**  |
@@ -379,5 +379,4 @@ capability as shown below.
 We have learnt to deploy a secure Quarkus application in Azure App
 Service, connected it to PostgreSQL database to add Fruit names from the
 app's UI.
-
 
