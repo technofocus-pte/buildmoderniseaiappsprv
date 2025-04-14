@@ -21,7 +21,7 @@ verify its deployment on Azure. This involves installing essential tools like Az
 **Pre-requisites:**
 
 GitHub account -- You are expected to have your own GitHub login credentials. If you do not have, please create one from here
-- +++https://github.com/signup?user_email=&source=form-home-signupobjectives+++
+- !!https://github.com/signup?user_email=&source=form-home-signupobjectives!!
 
 ## Exercise 1 : Provision, deploy the application ,and test it from the browser
 
@@ -37,11 +37,11 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
 ### Task 2: Register Service provider
 
-1.  Open your browser, open Azure   portal +++https://portal.azure.com+++.  Sign in with your Azure slice account(Azure Credentials).
+1.  Open your browser, open Azure   portal !!https://portal.azure.com!!.  Sign in with your Azure slice account(Azure Credentials).
 
-  Username: +++@lab.CloudPortalCredential(User1).Username+++  
+  Username: !!@lab.CloudPortalCredential(User1).Username!!  
 
-  Password: +++@lab.CloudPortalCredential(User1).Password+++
+  Password: !!@lab.CloudPortalCredential(User1).Password!!
 
   ![](./media/image2.jpeg)
 
@@ -58,7 +58,7 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
   ![](./media/image10.png)
 
-5.  Type +++Microsoft.AlertsManagement+++ and press enter. Select it and then click on **Register**.
+5.  Type !!Microsoft.AlertsManagement!! and press enter. Select it and then click on **Register**.
 
   ![](./media/image11.png)
 
@@ -66,7 +66,7 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
 ### Task 3: Open development environment
 
-1.  Open your browser, navigate to the address bar, and type or paste the following  URL: +++https://github.com/technofocus-pte/rag-postgres-openai-python-CSTesting.git+++ 
+1.  Open your browser, navigate to the address bar, and type or paste the following  URL: !!https://github.com/technofocus-pte/rag-postgres-openai-python-CSTesting.git!! 
 
   ![](./media/image13.jpeg)
 
@@ -90,7 +90,7 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
 1.  Run the following command on the Terminal. It generates the code to copy. Copy the code and press Enter.
 
-  +++azd auth login+++
+  !!azd auth login!!
 
   ![](./media/image19.png)
 
@@ -100,22 +100,22 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
 3.  Sign in with your Azure credentials.
 
-  Username: +++@lab.CloudPortalCredential(User1).Username+++  
+  Username: !!@lab.CloudPortalCredential(User1).Username!!
 
-  Password: +++@lab.CloudPortalCredential(User1).Password+++
+  Password: !!@lab.CloudPortalCredential(User1).Password!!
 
   ![](./media/image21.png)
 
 4.  Switch back to Codespace tab and press Ctrl + C .To create an environment for Azure resources, run the following Azure Developer CLI command.It asks you to enter the environment name.Enter  this name as we generared unique as per your loginid - +++ragpgpy@lab.LabInstance.Id+++
    Note: ragpgpy can be of your choice but Id should be same as your cloudid
     
-  +++azd env new+++
+  !!azd env new!!
 
   ![](./media/image22.png)
 
 5.  Run the following Azure Developer CLI command to provision the Azure resources and deploy the code.
 
-  +++azd provision+++
+  !!azd provision!!
 
   ![](./media/image23.png)
 
@@ -124,7 +124,7 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
   ![](./media/image24.png)
 
 7.  It will prompt you “**Enter a value for the 'existingResourceGroupName' infrastructure parameter:**” Enter the
-    resource group - +++@lab.CloudResourceGroup(ResourceGroup1).Name+++
+    resource group - !!@lab.CloudResourceGroup(ResourceGroup1).Name!!
 
   ![](./media/image25.png)
 
@@ -143,13 +143,13 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
 11. Run the below command to set the resource group
 
-  +++azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name+++
+  !!azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name!!
 
   ![](./media/image29.png)
 
 12. Run the below command to deploy the app to Azure.
 
-  +++azd deploy+++
+  !!azd deploy!!
 
   ![](./media/image30.png)
 
@@ -161,7 +161,7 @@ GitHub account -- You are expected to have your own GitHub login credentials. If
 
   ![](./media/image32.png)
 
-15. Click on **Open**. It opens a new tab with the app. Refresh page if you see **"This page isn’t working"** error.If still problem persist then re-run +++azd deploy++ command open Endpoint link.
+15. Click on **Open**. It opens a new tab with the app. Refresh page if you see **"This page isn’t working"** error.If still problem persist then re-run !!azd deploy!! command open Endpoint link.
 
   ![](./media/image33.png)
 
