@@ -48,7 +48,7 @@ The application is made from multiple components, including:
 ### Task 1: Open development environment
 
 1.  Open your browser, navigate to the address bar, type or paste the following
-    URL: ``https://github.com/technofocus-pte/azure-search-openai-javascr-CSTestingipt.git`` and sign in with your Github account.
+    URL: !!https://github.com/technofocus-pte/azure-search-openai-javascr-CSTestingipt.git!! and sign in with your Github account.
 
   ![](./media/image3.jpeg)
 
@@ -72,7 +72,7 @@ The application is made from multiple components, including:
 
 1.  Run the following command on the Terminal. Copy the code and press enter.
 
-  +++azd auth login+++
+  !!azd auth login!!
 
   ![](./media/image8.png)
 
@@ -82,9 +82,9 @@ The application is made from multiple components, including:
 
 3.  Sign in with your Azure credentials.
 
-  Username: +++@lab.CloudPortalCredential(User1).Username+++  
+  Username: !!@lab.CloudPortalCredential(User1).Username!!  
 
-  Password: +++@lab.CloudPortalCredential(User1).Password+++
+  Password: !!@lab.CloudPortalCredential(User1).Password!!
 
   ![](./media/image10.png)
 
@@ -92,7 +92,7 @@ The application is made from multiple components, including:
 
 4.  Switch back to GitHub Codespace tab. Run below command to Initialize the project environment in the current directory. Enter the  Environment name as +++ucragpgpy@lab.LabInstance.Id+++ and press Enter.this env is unique and generated as per your  loginid. please use same env name.
 
-  +++azd env new+++
+  !!azd env new!!
 
   ![](./media/image12.png)
 
@@ -102,7 +102,7 @@ The application is made from multiple components, including:
 
 6.  Select the below values.
 
-  +++azd provision+++
+  !!azd provision!!
 
 - **Select an Azure Subscription to use** : select your subscription
 
@@ -110,7 +110,7 @@ The application is made from multiple components, including:
 
 - Select existing resource group: Your existing resource group
   
-    +++@lab.CloudResourceGroup(ResourceGroup1).Name+++
+    !!@lab.CloudResourceGroup(ResourceGroup1).Name!!
 
   ![](./media/image14.png)
 
@@ -122,11 +122,11 @@ The application is made from multiple components, including:
 
 1. Run the below command to set the resource group environment variable.
 
-   +++azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name+++
+   !!azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name!!
    
 3. Run the below command to deploy the app.
 
-  +++azd deploy+++
+  !!azd deploy!!
 
   ![](./media/image16.png)
 
@@ -134,7 +134,7 @@ The application is made from multiple components, including:
 
   ![](./media/image17.png)
 
-3. Click on the endpoint url generated.(redeploy by running +++azd deploy+++ if your app is not working)
+3. Click on the endpoint url generated.(redeploy by running !!azd deploy!! if your app is not working)
 
   ![](./media/image18.png)
 
