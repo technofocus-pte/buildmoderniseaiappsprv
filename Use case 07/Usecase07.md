@@ -43,13 +43,13 @@ performing a vector cosine distance search.
 
 4.  At the Cloud Shell prompt, run the below command to clone the project
 
-    +++git clone https://github.com/technofocus-pte/postgresql-case+++
+    !!git clone https://github.com/technofocus-pte/postgresql-case!!
 
     ![](./media/image3.jpeg)
 
 5.  Navigate to the project folder.
 
-    +++cd postgresql-case+++
+    !!cd postgresql-case!!
 
     ![](./media/image4.jpeg)
 
@@ -61,12 +61,12 @@ performing a vector cosine distance search.
     location of your preference.]{.mark}** However, if replacing the  default, you must select another [Azure region that supports
     abstractive summarization] to ensure you can complete all of the tasks in the modules in this learning path.
 
-    +++REGION=@lab.CloudResourceGroup(ResourceGroup1).Location+++
+    !!REGION=@lab.CloudResourceGroup(ResourceGroup1).Location!!
 
 8.  The following command assigns the existing resource group name to be used for the resource group that will house all the resources used
     in this exercise.
 
-    +++RG_NAME=@lab.CloudResourceGroup(ResourceGroup1).Name+++
+    !!RG_NAME=@lab.CloudResourceGroup(ResourceGroup1).Name!!
 
     ![](./media/image5.png)
 
@@ -83,7 +83,7 @@ performing a vector cosine distance search.
     echo "Your randomly generated PostgreSQL admin user's password is:"
     ```
 
-    +++echo $ADMIN_PASSWORD+++
+    !!echo $ADMIN_PASSWORD!!
 
 
     ![](./media/image6.jpeg)
@@ -103,7 +103,7 @@ performing a vector cosine distance search.
 
     ![](./media/image9.png)
 
-4.  Search for ``Cognitive Services Contributor`` and select it and  then click on **Next** button.
+4.  Search for !!Cognitive Services Contributor!! and select it and  then click on **Next** button.
 
     ![](./media/image10.jpeg)
 
@@ -125,9 +125,9 @@ performing a vector cosine distance search.
 1.  Switch back to the 1st tab of Azure portal with Azure CLI to execute a Bicep deployment script to provision Azure resources in your
     resource group: Deployment takes 3 - 5min
 
-    +++cd+++
+    !!cd!!
 
-    +++az deployment group create --resource-group $RG_NAME --template-file "postgresql-case/Allfiles/Labs/Shared/deploy.bicep" --parameters restore=false adminLogin=pgAdmin adminLoginPassword=$ADMIN_PASSWORD+++
+    !!az deployment group create --resource-group $RG_NAME --template-file "postgresql-case/Allfiles/Labs/Shared/deploy.bicep" --parameters restore=false adminLogin=pgAdmin adminLoginPassword=$ADMIN_PASSWORD!!
 
     ![](./media/image14.jpeg)
 
@@ -167,7 +167,7 @@ performing a vector cosine distance search.
 
 In this task, you connect to the rentals database on your Azure Database for PostgreSQL server using the psql command-line utility from the Azure Cloud Shell.
 
-1.  In the Azure portal ``https://portal.azure.com``, navigate to your newly created Azure Database for PostgreSQL - Flexible Server.
+1.  In the Azure portal !!https://portal.azure.com!!, navigate to your newly created Azure Database for PostgreSQL - Flexible Server.
 
     ![](./media/image20.png)
 
@@ -200,18 +200,18 @@ Flexible Server: vector and azure_ai.
 1.  Switch back the Azure portal tab with Azure cli and run the following SQL command to enable the vector extension. For detailed
     instructions
 
-+++CREATE EXTENSION vector;+++
+!!CREATE EXTENSION vector;!!
 
 ![](./media/image26.jpeg)
 
 2.  To enable the azure_ai extension, **update and run** the following SQL command. You’ll need the endpoint and API key for the Azure
     OpenAI resource.Update below select statements with Azure OpenAI end point and key and then run them.
 
-+++CREATE EXTENSION azure_ai;+++
+!!CREATE EXTENSION azure_ai;!!
 
-+++SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.azure.com')+++
+!!SELECT azure_ai.set_setting('azure_openai.endpoint', 'https://<endpoint>.openai.azure.com')!!
 
-+++SELECT azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');+++
+!!SELECT azure_ai.set_setting('azure_openai.subscription_key', '<API Key>');!!
 
 ![](./media/image27.jpeg)
 
@@ -253,13 +253,13 @@ CREATE TABLE reviews (
 2.  Next, use the COPY command to load data from CSV files into each table you created above. Start by running the following command to
     populate the listings table.The command output should be COPY 50, indicating that 50 rows were written into the table from the CSV file.
 
-+++\COPY listings FROM 'postgresql-case/Allfiles/Labs/Shared/listings.csv' CSV HEADER+++
+!!\COPY listings FROM 'postgresql-case/Allfiles/Labs/Shared/listings.csv' CSV HEADER!!
 
 ![](./media/image30.jpeg)
 
 3.  Finally, run the command below to load customer reviews into the reviews table:The command output should be COPY 354, indicating that 354 rows were written into the table from the CSV file.
 
-+++\COPY reviews FROM 'postgresql-case/Allfiles/Labs/Shared/reviews.csv' CSV HEADER+++
+!!\COPY reviews FROM 'postgresql-case/Allfiles/Labs/Shared/reviews.csv' CSV HEADER!!
 
 ![](./media/image31.jpeg)
 
@@ -271,14 +271,14 @@ Now that we have some sample data, it's time to generate and store the embedding
 
 1.  Add the embedding vector column. The text-embedding-ada-002 model is configured to return 1,536 dimensions, so use that for the vector column size.
 
-+++ALTER TABLE listings ADD COLUMN listing_vector vector(1536);+++
+!!ALTER TABLE listings ADD COLUMN listing_vector vector(1536);!!
 
 ![](./media/image32.jpeg)
 
 2.  Generate an embedding vector for the description of each listing by calling Azure OpenAI through the create_embeddings user-defined
     function, which is implemented by the azure_ai extension.Note that this may take several minutes, depending on the available quota.
 
-+++UPDATE listings SET listing_vector = azure_openai.create_embeddings('embedding', description, max_attempts => 5, retry_delay_ms => 500) WHERE listing_vector IS NULL;+++
+!!UPDATE listings SET listing_vector = azure_openai.create_embeddings('embedding', description, max_attempts => 5, retry_delay_ms => 500) WHERE listing_vector IS NULL;!!
 
 ![](./media/image33.png)
 
@@ -290,7 +290,7 @@ embedding vector, then perform a cosine search to find the listings whose descri
 1.  Use the embedding in a cosine search (<=> represents cosine distance operation), fetching the top 10 most similar listings to
     the query.
 
-+++SELECT id, name FROM listings ORDER BY listing_vector <=> azure_openai.create_embeddings('embedding', 'bright natural light')::vector LIMIT 10;+++
+!!SELECT id, name FROM listings ORDER BY listing_vector <=> azure_openai.create_embeddings('embedding', 'bright natural light')::vector LIMIT 10;!!
 
 You’ll get a result similar to this. Results may vary, as embedding vectors are not guaranteed to be deterministic:
 
@@ -299,7 +299,7 @@ You’ll get a result similar to this. Results may vary, as embedding vectors ar
 2.  You may also project the description column to be able to read the text of the matching rows whose descriptions were semantically
     similar. For example, this query returns the best match:
 
-+++SELECT id, description FROM listings ORDER BY listing_vector <=> azure_openai.create_embeddings('embedding', 'bright natural light')::vector LIMIT 1;+++
+!!SELECT id, description FROM listings ORDER BY listing_vector <=> azure_openai.create_embeddings('embedding', 'bright natural light')::vector LIMIT 1;!!
 
 ![](./media/image35.jpeg)
 
@@ -313,26 +313,26 @@ augmented with embedding vectors to execute semantic searches.
 
 1.  Confirm the listings table has four columns: id, name, description,and listing_vector.
 
-+++\d listings+++
+!!\d listings!!
 
 ![](./media/image36.jpeg)
 
 2.  Confirm that at least one row has a populated listing_vector column.
 
-+++SELECT COUNT(*) > 0 FROM listings WHERE listing_vector IS NOT NULL;+++
+!!SELECT COUNT(*) > 0 FROM listings WHERE listing_vector IS NOT NULL;!!
 
 ![](./media/image37.jpeg)
 
 3.  Confirm the embedding vector has 1536 dimensions:
 
-+++SELECT vector_dims(listing_vector) FROM listings WHERE listing_vector IS NOT NULL LIMIT 1;+++
+!!SELECT vector_dims(listing_vector) FROM listings WHERE listing_vector IS NOT NULL LIMIT 1;!!
 
 ![](./media/image38.jpeg)
 
 4.  Confirm that semantic searches return results. Use the embedding in a cosine search, fetching the top 10 most similar
 listings to the query.
 
-+++SELECT id, name FROM listings ORDER BY listing_vector <=> azure_openai.create_embeddings('embedding', 'bright natural light')::vector LIMIT 10;+++
+!!SELECT id, name FROM listings ORDER BY listing_vector <=> azure_openai.create_embeddings('embedding', 'bright natural light')::vector LIMIT 10;!!
 
 ![](./media/image39.jpeg)
 
@@ -408,8 +408,8 @@ LANGUAGE plpgsql;
 
 1.  To query the recommendation function, pass it a listing ID and the  number of recommendations it should make.
 
-+++select out_listingName, out_score from recommend_listing( (SELECT id from listings limit 1), 20); -- search for 20 listing recommendations
-closest to a listing+++
+!!select out_listingName, out_score from recommend_listing( (SELECT id from listings limit 1), 20); -- search for 20 listing recommendations
+closest to a listing!!
 
 ![](./media/image41.jpeg)
 
@@ -424,14 +424,14 @@ closest to a listing+++
 
 1.  Make sure the function exists with the correct signature:
 
-+++\df recommend_listing+++
+!!\df recommend_listing!!
 
 ![](./media/image44.jpeg)
 
 2.  Make sure you can query it using the following query:
 
-+++select out_listingName, out_score from recommend_listing( (SELECT id from listings limit 1), 20); -- search for 20 listing recommendations
-closest to a listing+++
+!!select out_listingName, out_score from recommend_listing( (SELECT id from listings limit 1), 20); -- search for 20 listing recommendations
+closest to a listing!!
 
 ![](./media/image45.jpeg)
 
@@ -448,7 +448,7 @@ database is used. Follow these instructions to delete your resource group and al
 
 ![](./media/image47.png)
 
-3.  Type **delete **in the text box and then click on +++Delete+++. Confirm deletion.
+3.  Type **delete **in the text box and then click on !!Delete!!. Confirm deletion.
 
 ![](./media/image48.png)
 
@@ -475,7 +475,7 @@ database is used. Follow these instructions to delete your resource group and al
 
 > ![](./media/image54.png)
 
-9.  Type +++Delete+++  and click on Delete. Confirm deleting resources by clicking on **Delete** button.
+9.  Type !!Delete!!  and click on Delete. Confirm deleting resources by clicking on **Delete** button.
 
 ![](./media/image55.png)
 
