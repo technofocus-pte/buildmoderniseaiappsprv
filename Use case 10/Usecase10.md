@@ -46,11 +46,11 @@ credentials. If you do not have, please create one from here
 
 ### Task 2 : Register Service provider
 
-1.  Open a browser and go to +++https://portal.azure.com+++ and sign in with your Azure credentials.
+1.  Open a browser and go to !!https://portal.azure.com!! and sign in with your Azure credentials.
 
-   - Username: +++@lab.CloudPortalCredential(User1).Username+++
+   - Username: !!@lab.CloudPortalCredential(User1).Username!!
      
-   - Password: +++@lab.CloudPortalCredential(User1).Password+++
+   - Password: !!@lab.CloudPortalCredential(User1).Password!!
 
 
 2.  On the Home page, click on the **Subscription** tile.
@@ -66,7 +66,7 @@ credentials. If you do not have, please create one from here
     
   ![](./media/image8.png)
 
-6.  Type ``Microsoft.AlertsManagement`` and press enter. Select it and then click on **Register**.
+6.  Type !!Microsoft.AlertsManagement!! and press enter. Select it and then click on **Register**.
 
   ![](./media/image9.png)
 
@@ -74,13 +74,13 @@ credentials. If you do not have, please create one from here
 
 ### Task 3: Provision Services and application to Azure
 
-1.  Open a browser and go to +++https://github.com+++ and sign in with your Github account. Search for the below repo
+1.  Open a browser and go to !!https://github.com!! and sign in with your Github account. Search for the below repo
 
   ![](./media/image11.jpeg)
 
 2.  Search for the below repo and click on **Fork**.
 
-  +++https://github.com/technofocus-pte/chat-csharp-cosmos-db-nosql-openai-CSTesting.git+++
+  !!https://github.com/technofocus-pte/chat-csharp-cosmos-db-nosql-openai-CSTesting.git!!
 
   ![](./media/image12.jpeg)
 
@@ -98,15 +98,15 @@ credentials. If you do not have, please create one from here
 
 6.  Run the below command to log in to AZD. Copy the generated code and press Enter. 
 
-  +++azd auth login+++
+  !!azd auth login!!
 
   ![](./media/image16.jpeg)
 
 7.  Paste the generated code and sign in with your Azure credentials.
 
-  Username: +++@lab.CloudPortalCredential(User1).Username+++  
+  Username: !!@lab.CloudPortalCredential(User1).Username!! 
 
-  Password: +++@lab.CloudPortalCredential(User1).Password+++
+  Password: !!@lab.CloudPortalCredential(User1).Password!!
 
   ![](./media/image17.jpeg)
 
@@ -114,13 +114,13 @@ credentials. If you do not have, please create one from here
 
 8.  Run the command below to initialize the project in the current    directory. Enter the Environment name as +++cosmoschatapp@lab.LabInstance.Id+++ and press Enter.
 
-  +++azd init+++
+  !!azd init!!
 
   ![](./media/image19.png)
 
 9.  Run the below command to deploy the services to Azure, and build your container. Select the below values.
 
-  +++azd provision+++
+  !!azd provision!!
 
   - Enter 1 to select subscription.
     
@@ -140,13 +140,13 @@ credentials. If you do not have, please create one from here
 
 1.  Press Ctrl + C  and run the below command to set the resource group environment variable.
 
-   +++azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name+++
+   !!azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name!!
 
   ![](./media/image23.png)
     
 2.  Run the below command to deploy all resources and wait for the deployment to complete successfully.
 
-    +++azd deploy+++
+    !!azd deploy!!
 
    
 
@@ -174,13 +174,13 @@ credentials. If you do not have, please create one from here
 
 3.  Enter the below prompt.
 
-  ``What is the seating capacity for Lumen in Seattle?``
+ !!What is the seating capacity for Lumen in Seattle?!!
 
   ![](./media/image38.jpeg)
 
 4.  Enter the below prompt. Explore the app with different prompts.
 
-  ``is that bigger than Dogger stadium??``
+  !!is that bigger than Dogger stadium??!!
 
   ![](./media/image39.jpeg)
 
