@@ -27,9 +27,9 @@ The **requirements.txt** has the following packages, all used by a typical dat
 
 1.  Open a browser go to ``https://portal.azure.com`` and sign in with your cloud slice account below.
 
- Username: +++@lab.CloudPortalCredential(User1).Username+++  
+ Username: !!Cloudsliceuser!! 
 
- Password: +++@lab.CloudPortalCredential(User1).Password+++
+ Password: !!PWD!!
 
 2.  Click on **Subscriptions** tile.
 
@@ -39,7 +39,7 @@ The **requirements.txt** has the following packages, all used by a typical dat
 
  ![](./media/image7.png)
 
-4.  Expand Settings from the left navigation menu. Click on **Resource providers**, enter `Microsoft.AlertsManagement` and select i,t, and then click **Register**.
+4.  Expand Settings from the left navigation menu. Click on **Resource providers**, enter !!Microsoft.AlertsManagement!! and select it, and then click **Register**.
 
   ![](./media/image8.png)
 
@@ -50,9 +50,9 @@ The **requirements.txt** has the following packages, all used by a typical dat
 This use case has a dev container configuration, which makes it easier to develop apps locally, deploy them to Azure, and monitor them. We use
 Azure development CLI templates to deploy apps
 
-1.  Open a browser go to ``https://github.com`` and sign in with your GitHub account.
+1.  Open a browser go to !!https://github.com!! and sign in with your GitHub account.
 
-2.  Fork this repository `https://github.com/technofocus-pte/flask-postgresql-CSTesting.git` to your account by clicking on **Fork** as shown in the below image.
+2.  Fork this repository !!https://github.com/technofocus-pte/flask-postgresql-CSTesting.git!! to your account by clicking on **Fork** as shown in the below image.
 
   ![](./media/image10.jpeg)
 
@@ -72,25 +72,25 @@ Azure development CLI templates to deploy apps
 
 6.  In the codespace terminal, run the following commands:
 
- +++python3 -m pip install -r requirements.txt+++
+ !!python3 -m pip install -r requirements.txt!!
 
   ![](./media/image15.jpeg)
 
 7.  Run the below command to create an environment variable
 
- +++cp .env.sample.devcontainer .env+++
+ !!cp .env.sample.devcontainer .env!!
 
   ![](./media/image16.jpeg)
 
 8.  Run below command for data migration
 
-  +++python3 -m flask db upgrade+++
+  !!python3 -m flask db upgrade!!
 
   ![](./media/image17.jpeg)
 
 9.  Run the below command to Start the development server
 
- +++python3 -m flask run+++
+ !!python3 -m flask run!!
 
  ![](./media/image18.jpeg)
 
@@ -108,11 +108,11 @@ Azure development CLI templates to deploy apps
 
 12. Enter the details below and click on the **Submit** button.
 
- Name : +++Contoso Rica+++
+ Name : !!Contoso Rica!!
 
- Street Adress - +++3A ,8th cross, Ferns street , Singapore+++
+ Street Adress - !!3A ,8th cross, Ferns street , Singapore!!
 
- Description - +++This is a medium to high-priced restaurant in the city shopping center+++
+ Description - !!This is a medium to high-priced restaurant in the city shopping center!!
 
  ![](./media/image22.jpeg)
 
@@ -146,7 +146,7 @@ monitor them.
 
 1.  Switch back to the GitHub code space tab, Run the below command to Initialize a new azd environment:
 
- +++azd init+++
+ !!azd init!!
 
  ![](./media/image27.jpeg)
 
@@ -161,9 +161,9 @@ monitor them.
 
 4.  Enter the code and then sign in with your Azure credentials.
 
-  Username: +++@lab.CloudPortalCredential(User1).Username+++  
+  Username: !!@lab.CloudPortalCredential(User1).Username!!  
  
-  Password: +++@lab.CloudPortalCredential(User1).Password+++
+  Password: !!@lab.CloudPortalCredential(User1).Password!!
 
   ![](./media/image30.jpeg)
 
@@ -176,7 +176,7 @@ monitor them.
 5.  Switch back Gtihub codespace tab and run below command to provision and deploy all the resources. It will prompt to select your Azure
     subscription. Enter **1** to select your subscription and press Enter.
 
-  +++azd provision+++
+  !!azd provision!!
 
   ![](./media/image34.png)
 
@@ -186,7 +186,7 @@ monitor them.
 
 7.  Enter the resource group name below  and press enter.
 
-   +++@lab.CloudResourceGroup(ResourceGroup1).Name+++
+   !!@lab.CloudResourceGroup(ResourceGroup1).Name!!
 
   ![](./media/image36.png)
 
@@ -205,13 +205,13 @@ monitor them.
 
 1.  Press Ctrl + C  and run the below command to set the resource group environment variable.
 
-   +++azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name+++
+   !!azd env set AZURE_RESOURCE_GROUP @lab.CloudResourceGroup(ResourceGroup1).Name!!
 
    ![](./media/image41.png)
 
 2.  Run the below command to deploy all resources and wait for the deployment to complete successfully.
 
-    +++azd deploy+++
+    !!azd deploy!!
 
     ![](./media/image42.png)
 
