@@ -39,7 +39,7 @@ perform the following steps
 
 1.  Open Gitbash from the Desktop and run the below command login to the Azure     portal
 
-    +++az login+++
+    !!az login!!
 
     **Note**: If see WARNING: A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize.
     Please continue the log in to the web browser. If no web browser is available or if the web browser fails to open, use device code flow
@@ -49,9 +49,9 @@ perform the following steps
 
 2.  This command will take you to the default browser to log in. Log in with your Azure subscription account.
 
-    Username: +++@lab.CloudPortalCredential(User1).Username+++
+    Username: !!@lab.CloudPortalCredential(User1).Username!!
 
-    Password: +++@lab.CloudPortalCredential(User1).Password+++
+    Password: !!@lab.CloudPortalCredential(User1).Password!!
 
     ![](./media/image2.jpeg)
 
@@ -63,17 +63,17 @@ perform the following steps
 
 5.  Now we will enable our Azure subscription to execute the below command
 
-    +++az account set --subscription @lab.CloudSubscription.Id+++
+    !!az account set --subscription @lab.CloudSubscription.Id!!
 
-    +++az account list --output table+++   
+    !!az account list --output table!!  
 
-    +++az provider register --namespace Microsoft.ContainerRegistry+++
+    !!az provider register --namespace Microsoft.ContainerRegistry!!
      
-    +++az provider register --namespace Microsoft.Compute+++
+    !!az provider register --namespace Microsoft.Compute!!
     
-    +++az provider register --namespace Microsoft.CloudShell+++
+    !!az provider register --namespace Microsoft.CloudShell!!
     
-    +++az provider register --namespace Microsoft.ContainerService+++
+    !!az provider register --namespace Microsoft.ContainerService!!
 
     ![](./media/image5.jpeg)
 
@@ -82,44 +82,44 @@ perform the following steps
 
     >Note: We have already created ra esource group for me in the cloud. You have to deploy all resources within the existing resource group.     You can find it in your Azure portal or you can find it under the Resources tab on your VM
 
-    +++export AZ_CONTAINER_REGISTRY=javaaksregist@lab.LabInstance.Id+++
+    !!export AZ_CONTAINER_REGISTRY=javaaksregist@lab.LabInstance.Id!!
 
-    +++export AZ_KUBERNETES_CLUSTER=javaakscluster@lab.LabInstance.Id+++
+    !!export AZ_KUBERNETES_CLUSTER=javaakscluster@lab.LabInstance.Id!!
 
-    +++export AZ_LOCATION="westus"+++
+    !!export AZ_LOCATION="westus"!!
 
-    +++export AZ_KUBERNETES_CLUSTER_DNS_PREFIX="javaakscontainer"+++
+    !!export AZ_KUBERNETES_CLUSTER_DNS_PREFIX="javaakscontainer"!!
 
-    +++export AZ_RESOURCE_GROUP=@lab.CloudResourceGroup(ResourceGroup1).Name+++
+    !!export AZ_RESOURCE_GROUP=@lab.CloudResourceGroup(ResourceGroup1).Name!!
 
     >**Note:** You'll want to replace with your region of choice, for example: eastus You'll want to replace with a unique value as this is
     used to generate a unique FQDN (fully qualified domain name) for your Azure Container Registry when it is created, for example:
     someuniquevaluejavacontainerregistry.
 
-    ![](./media/image6.png)
+    
 
 8.  Azure Container Registry allows you to build, store, and manage container images, which are ultimately where the container image for
     the Java app will be stored. Create an Azure Container Registry with the following commands.
 
-    +++az acr create --resource-group $AZ_RESOURCE_GROUP --name $AZ_CONTAINER_REGISTRY --sku Basic | jq+++
+    !!az acr create --resource-group $AZ_RESOURCE_GROUP --name $AZ_CONTAINER_REGISTRY --sku Basic | jq!!
 
     ![](./media/image7.jpeg)
 
 9.  Configure Azure CLI to use this newly created Azure Container Registry
 
-    +++az configure --defaults acr=$AZ_CONTAINER_REGISTRY+++
+    !!az configure --defaults acr=$AZ_CONTAINER_REGISTRY!!
 
     ![](./media/image8.jpeg)
 
 10. Authenticate to the newly created Azure Container Registry
 
-    +++az acr login -n $AZ_CONTAINER_REGISTRY+++
+    !!az acr login -n $AZ_CONTAINER_REGISTRY!!
 
     ![](./media/image9.jpeg)
 
 11. Create an Azure Kubernetes Cluster, You'll need an Azure Kubernetes Cluster to deploy the Java app (container image) to.
 
-    +++az aks create --resource-group $AZ_RESOURCE_GROUP --name $AZ_KUBERNETES_CLUSTER --attach-acr $AZ_CONTAINER_REGISTRY --dns-name-prefix=$AZ_KUBERNETES_CLUSTER_DNS_PREFIX --generate-ssh-keys | jq+++
+    !!az aks create --resource-group $AZ_RESOURCE_GROUP --name $AZ_KUBERNETES_CLUSTER --attach-acr $AZ_CONTAINER_REGISTRY --dns-name-prefix=$AZ_KUBERNETES_CLUSTER_DNS_PREFIX --generate-ssh-keys | jq!!
 
     ![](./media/image10.jpeg)
 
@@ -142,13 +142,13 @@ building the application without Docker. If you do not have Java & Maven install
 
 1.  Run the following command in your CLI to navigate to the project.
 
-    +++cd "C:\Labfiles\containerize-and-deploy-Java-app-to-Azure-master\Project\Airlines"+++
+    !!cd "C:\Labfiles\containerize-and-deploy-Java-app-to-Azure-master\Project\Airlines"!!
 
     ![](./media/image12.jpeg)
 
 2.  Run the following command in your CLI
 
-    +++mvn clean install+++
+    !!mvn clean install!!
 
     ![](./media/image13.jpeg)
 
@@ -164,7 +164,7 @@ building the application without Docker. If you do not have Java & Maven install
 
 1.  Within the root of your project, containerize-and-deploy-Java-app-to-Azure/Project/Airlines, Create a file called **Dockerfile.**
 
-    +++vi Dockerfile+++
+    !!vi Dockerfile!!
 
     ![](./media/image15.jpeg)
 
@@ -212,7 +212,7 @@ container images (JDK/JRE) for the Linux architecture.
 
     **IMPORTANT**: This lab requires jdk 11 . set java_home to jdk 11
 
-    +++docker build -t flightbookingsystemsample .+++
+    !!docker build -t flightbookingsystemsample .!!
 
     ![](./media/image17.jpeg)
 
@@ -226,7 +226,7 @@ container images (JDK/JRE) for the Linux architecture.
 3.  Docker can also display the available images that are resident. This is helpful for viewing what's available to run. Run the following
     command in your CLI
 
-    +++docker image ls+++
+    !!docker image ls!!
 
     You will see something similar:
 
@@ -234,18 +234,18 @@ container images (JDK/JRE) for the Linux architecture.
 
 ### Task 2: Run a container image
 
-1.  Go to Start and search for +++command prompt+++ and open it as Administrator. run below command and check if any process is running on port 8080.
- +++netstat -ano | findstr :8080+++
+1.  Go to Start and search for !!command prompt!! and open it as Administrator. run below command and check if any process is running on port 8080.
+ !!netstat -ano | findstr :8080!!
 
 2.  Run the below command with process id running on port 8080
    
-    +++taskkill /PID XXXX /F++++ (replace XXXX with your process ID
+    !!taskkill /PID XXXX /F!! (replace XXXX with your process ID
 
 3.  You can run a container image now that you have successfully built it.
 
 4.  Docker run is the command used to run a container image. The -p :#### argument will be used to forward localhost HTTP (the first port before the colon) traffic to the container at runtime (the second port after the colon). Remember from the Dockerfile that the Tomcat appserver is listening for HTTP traffic on port 8080 hence that is the container port that needs to be exposed. Lastly the image tag flightbookingsystemsample is needed to instruct Docker of what image to run. Run the following command in your CLI:
 
-    +++docker run -p 8080:8080 flightbookingsystemsample+++
+    !!docker run -p 8080:8080 flightbookingsystemsample!!
 
    You'll see something similar:
 
@@ -256,10 +256,10 @@ container images (JDK/JRE) for the Linux architecture.
     >**Note:** if the command "docker run -p 8080:8080 flightbookingsystemsample" comes up with an error, then use the below
     mentioned port
 
-    +++docker run -p 8081:8080 flightbookingsystemsample+++
+    !!docker run -p 8081:8080 flightbookingsystemsample!!
 
 5.  Open up a browser and visit the Flight Booking System for Airline Reservations landing page  
-    at  +++http://localhost:8080/FlightBookingSystemSample+++
+    at  !!http://localhost:8080/FlightBookingSystemSample!!
 
    You should see the following:
 
@@ -267,9 +267,9 @@ container images (JDK/JRE) for the Linux architecture.
 
 6.  You can optionally sign in with any user from tomcat-users.xml for example
 
-    Username:  +++someuser@azure.com+++
+    Username:  !!someuser@azure.com!!
 
-    Password: +++password+++
+    Password: !!password!!
 
     ![](./media/image23.jpeg)
 
@@ -285,23 +285,23 @@ container images (JDK/JRE) for the Linux architecture.
 
 2.  Open a new instance of Gitbash and run az command to sign into the Azure portal.
 
-    +++az login+++
+    !!az login!!
 
 3.  Run the following command in your CLI
 
-    +++cd "C:\Labfiles\containerize-and-deploy-Java-app-to-Azure-master\Project\Airlines"+++
+    !!cd "C:\Labfiles\containerize-and-deploy-Java-app-to-Azure-master\Project\Airlines"!!
 
 4.  We will be using the same Authenticate with Azure Resource Manager we created earlier in Exercise 1 Task 1. Set the below variables as per your variable values in the Azure portal.
 
-+++export AZ_RESOURCE_GROUP=@lab.CloudResourceGroup(ResourceGroup1).Name+++
+!!export AZ_RESOURCE_GROUP=@lab.CloudResourceGroup(ResourceGroup1).Name!!
 
-+++export AZ_CONTAINER_REGISTRY=javaaksregist@lab.LabInstance.Id+++
+!!export AZ_CONTAINER_REGISTRY=javaaksregist@lab.LabInstance.Id!!
 
-+++export AZ_KUBERNETES_CLUSTER=javaakscluster@lab.LabInstance.Id+++
+!!export AZ_KUBERNETES_CLUSTER=javaakscluster@lab.LabInstance.Id!!
 
-+++export AZ_LOCATION=“westus”+++
+!!export AZ_LOCATION=“westus”!!
 
-+++export AZ_KUBERNETES_CLUSTER_DNS_PREFIX="javaakscontainer"+++
+!!export AZ_KUBERNETES_CLUSTER_DNS_PREFIX="javaakscontainer"!!
 
 > **Note:** If your session has idled out, you are doing this step at another point in time and/or from another CLI you may have to re
 > Initialize your environment variables and re-authenticate with the following CLI commands.
@@ -318,19 +318,19 @@ flightbookingsystemsample image from Azure Container Registry.
 
 2.  Sign in **Azure Container Registry** execute the below command
 
-    +++az acr login -n $AZ_CONTAINER_REGISTRY+++
+    !!az acr login -n $AZ_CONTAINER_REGISTRY!!
 
     ![](./media/image25.jpeg)
 
 3.  First tag the previously built container image with your Azure Container Registry:
 
-    +++docker tag flightbookingsystemsample $AZ_CONTAINER_REGISTRY.azurecr.io/flightbookingsystemsample+++
+    !!docker tag flightbookingsystemsample $AZ_CONTAINER_REGISTRY.azurecr.io/flightbookingsystemsample!!
 
     ![](./media/image26.jpeg)
 
 4.  Second, push the container image to Azure Container Registry
 
-    +++docker push $AZ_CONTAINER_REGISTRY.azurecr.io/flightbookingsystemsample+++
+    !!docker push $AZ_CONTAINER_REGISTRY.azurecr.io/flightbookingsystemsample!!
 
     ![](./media/image27.jpeg)
 
@@ -338,7 +338,7 @@ flightbookingsystemsample image from Azure Container Registry.
 
 5.  Now view the Azure Container Registry image meta-data of the newly pushed image. Run the following command in your CLI
 
-    +++az acr repository show -n $AZ_CONTAINER_REGISTRY --image flightbookingsystemsample:latest+++
+    !!az acr repository show -n $AZ_CONTAINER_REGISTRY --image flightbookingsystemsample:latest!!
 
     ![](./media/image29.jpeg)
 
@@ -355,15 +355,15 @@ In this exercise, you will deploy a container image to Azure Kubernetes Service.
 
 2.  Within the root of your project, **Flight-Booking-System-JavaServlets_App/Project/Airlines**,Create a file called deployment.yml. Run the following command in your CLI:
 
-   AZ_CONTAINER_REGISTRY=+++javaaksregist@lab.LabInstance.Id+++
+   AZ_CONTAINER_REGISTRY=!!javaaksregist@lab.LabInstance.Id!!
 
-    +++vi deployment.yml+++
+    !!vi deployment.yml!!
 
     ![](./media/image30.jpeg)
 
 4.  Add the following contents to deployment.yml and then save and exit:
 
-    >**Note:** You'll want to update with your AZ_CONTAINER_REGISTRY environment variable value that was set earlier, Exercise 1 Task1( AZ_CONTAINER_REGISTRY= javaaksregist )-   AZ_CONTAINER_REGISTRY=+++javaaksregist@lab.LabInstance.Id+++
+    >**Note:** You'll want to update with your AZ_CONTAINER_REGISTRY environment variable value that was set earlier, Exercise 1 Task1( AZ_CONTAINER_REGISTRY= javaaksregist )-   AZ_CONTAINER_REGISTRY=!!avaaksregist@lab.LabInstance.Id!!
    
 
 ```
@@ -424,25 +424,25 @@ spec:
 8.  Now configure your Azure CLI to access your Azure Kubernetes Cluster via the kubectl command. Install kubectl locally using the az aks
     install-cli command. Run the following command in your CLI
 
-    +++az aks install-cli+++
+    !!az aks install-cli!!
 
     ![](./media/image32.jpeg)
 
 9.  Configure kubectl to connect to your Kubernetes cluster using the az aks get-credentials command. Run the following command in your CLI
 
-    +++az aks get-credentials --resource-group $AZ_RESOURCE_GROUP --name $AZ_KUBERNETES_CLUSTER+++
+    !!az aks get-credentials --resource-group $AZ_RESOURCE_GROUP --name $AZ_KUBERNETES_CLUSTER!!
 
     ![](./media/image33.jpeg)
 
 10.  Now instruct Azure Kubernetes Service to apply deployment.yml changes to your cluster. Run the following command in your CLI
 
-    +++kubectl apply -f deployment.yml+++
+    !!kubectl apply -f deployment.yml!!
 
    ![](./media/image34.jpeg)
 
 10. Now use **kubectl** to monitor the status of the deployment. Run the following command in your CLI
 
-    +++kubectl get all+++
+    !!kubectl get all!!
 
     ![](./media/image35.jpeg)
 
@@ -452,7 +452,7 @@ spec:
 
 12. You can view the app logs within each pod as well.Replace XXXX with your POD at the end of the command and run it in CLI as shown in the below image.  (eg - **kubectl logs pod/flightbookingsystemsample-6688c9d4b-4z2nk**)
 
-    +++kubectl logs pod/flightbookingsystemsample-+++
+    !!kubectl logs pod/flightbookingsystemsample-!!
 
     ![](./media/image36.jpeg)
 
@@ -464,7 +464,7 @@ spec:
     >**Note:** You'll want to substitute the ip address in the following,20.81.13.151, with that of your EXTERNAL-IP from the command you
     previously executed.
 
-14. Open up a browser and visit the Flight Booking System Sample landing page at   ``http://YOUR IPCON:8080/FlightBookingSystemSample`` (update with your external IP address )
+14. Open up a browser and visit the Flight Booking System Sample landing page at   !!http://YOUR IPCON:8080/FlightBookingSystemSample!! (update with your external IP address )
 
    ![](./media/image38.jpeg)
 
@@ -482,7 +482,7 @@ spec:
 
 3.  Select all resources and then click on **Delete** (Do NOT DELETE – Resource group)
 
-4.  Enter ``delete`` and then click on **Delete**.
+4.  Enter !!delete!! and then click on **Delete**.
 
     ![](./media/image41.png)
 
