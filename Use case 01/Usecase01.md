@@ -421,13 +421,11 @@ You need to set up some environment variables. Here are some notes about the var
 
     !!export AZ_LOCATION="@lab.CloudResourceGroup(ResourceGroup1).Location"!!
 
-    ![](./media/image40.png)
-
     ![](./media/image41.png)
 
 3.  Run !!az login!! It opens the default browser to sign in. Sign in with your Azure subscription account.
 
-    ![](./media/image42.png)
+    
 
 ### Task 2 : Create an instance of Azure Database for PostgreSQL
 
